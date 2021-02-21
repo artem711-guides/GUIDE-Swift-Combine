@@ -19,10 +19,16 @@ struct FormView: View {
                             .autocapitalization(.none)
                     } //: SECTION
                     
-                    Section(header: Text("PASSWORD"), footer: Text(formViewModel.inlineErrorForPassword).foregroundColor(.red)) {
+                    Section(header: Text("PASSWORD"),
+                            footer: Text(formViewModel.inlineErrorPassword).foregroundColor(.red)) {
                         SecureField("Password", text: $formViewModel.password)
                         SecureField("Repeat password", text: $formViewModel.passwordAgain)
                     } //: SECTION
+                    
+                    Section(header: Text("ABOUT ME"),
+                            footer: Text(formViewModel.inlineErrorDescription).foregroundColor(.red)) {
+                        TextField("About me", text: $formViewModel.description)
+                    }
                 } //: FORM
                 
                 Button(action: {}, label: {

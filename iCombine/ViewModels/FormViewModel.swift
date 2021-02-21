@@ -13,9 +13,10 @@ final class FormViewModel: ObservableObject {
     @Published var username = ""
     @Published var password = ""
     @Published var passwordAgain = ""
+    @Published var description = ""
     
-    @Published var inlineErrorForPassword = ""
-    
+    @Published var inlineErrorPassword = ""
+    @Published var inlineErrorDescription = ""
     @Published var isValid = false
     
     // MARK: - Constants
@@ -44,7 +45,23 @@ final class FormViewModel: ObservableObject {
                     return ""
                 }
             }
-            .assign(to: \.inlineErrorForPassword, on: self)
+            .assign(to: \.inlineErrorPassword, on: self)
+            .store(in: &cancellables)
+        
+        isDescriptionValidPublisher
+            .dropFirst()
+            .receive(on: RunLoop.main)
+            .map { descriptionStatus in
+                switch descriptionStatus {
+                case .tooLong:
+                    return "Too long description"
+                case .empty:
+                    return "Not long enough"
+                case .valid:
+                    return  ""
+                }
+            }
+            .assign(to: \.inlineErrorDescription, on: self)
             .store(in: &cancellables)
     }
     
@@ -94,8 +111,34 @@ final class FormViewModel: ObservableObject {
     
     private var isPasswordStrongPublisher: AnyPublisher<Bool, Never> {
         $password
-            .debounce(for: 0.2, scheduler: RunLoop.main).removeDuplicates()
+            .debounce(for: 0.2, scheduler: RunLoop.main)
+            .removeDuplicates()
             .map { Self.predicate.evaluate(with: $0) }
+            .eraseToAnyPublisher()
+    }
+    
+    // Description
+    private var isDescriptionValidPublisher: AnyPublisher<DescriptionStatus, Never> {
+        Publishers.CombineLatest(isDescriptionEmptyPublisher, isDescriptionTooLongPublisher)
+            .map {
+                if $0 { return DescriptionStatus.empty }
+                else if $1 { return DescriptionStatus.tooLong }
+                return DescriptionStatus.valid
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    private var isDescriptionEmptyPublisher: AnyPublisher<Bool, Never> {
+        $description
+            .removeDuplicates()
+            .map { $0.isEmpty }
+            .eraseToAnyPublisher()
+    }
+    
+    private var isDescriptionTooLongPublisher: AnyPublisher<Bool, Never> {
+        $description
+            .removeDuplicates()
+            .map { $0.count > 10 }
             .eraseToAnyPublisher()
     }
 }

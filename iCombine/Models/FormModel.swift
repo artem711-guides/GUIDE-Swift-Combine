@@ -13,3 +13,9 @@ enum PasswordStatus {
     case notMatchPasswords
     case valid
 }
+
+enum DescriptionStatus {
+    case empty
+    case tooLong
+    case valid
+}
