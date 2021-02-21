@@ -14,6 +14,9 @@
 		ACCE826C25E2BAA000C514C3 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCE826B25E2BAA000C514C3 /* FormView.swift */; };
 		ACCE826F25E2BB7C00C514C3 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCE826E25E2BB7C00C514C3 /* FormViewModel.swift */; };
 		ACCE827225E2C2B500C514C3 /* FormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCE827125E2C2B500C514C3 /* FormModel.swift */; };
+		ACD6E6A125E2D2CE00EB3786 /* TodosList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACD6E69F25E2D2CE00EB3786 /* TodosList.xcdatamodeld */; };
+		ACD6E6A425E2D32B00EB3786 /* TodosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6E6A325E2D32B00EB3786 /* TodosView.swift */; };
+		ACD6E6A825E2D64000EB3786 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6E6A725E2D64000EB3786 /* Persistence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		ACCE826B25E2BAA000C514C3 /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		ACCE826E25E2BB7C00C514C3 /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
 		ACCE827125E2C2B500C514C3 /* FormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormModel.swift; sourceTree = "<group>"; };
+		ACD6E6A025E2D2CE00EB3786 /* TodosList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TodosList.xcdatamodel; sourceTree = "<group>"; };
+		ACD6E6A325E2D32B00EB3786 /* TodosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosView.swift; sourceTree = "<group>"; };
+		ACD6E6A725E2D64000EB3786 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,7 @@
 		ACCABC8625E1929900062729 /* iCombine */ = {
 			isa = PBXGroup;
 			children = (
+				ACD6E6A625E2D63500EB3786 /* Services */,
 				ACCE826A25E2BA7C00C514C3 /* Models */,
 				ACCE826825E2BA7300C514C3 /* Views */,
 				ACCE826925E2BA7500C514C3 /* ViewModels */,
@@ -65,6 +72,7 @@
 				ACCABC8B25E1929B00062729 /* Assets.xcassets */,
 				ACCABC9025E1929B00062729 /* Info.plist */,
 				ACCABC8D25E1929B00062729 /* Preview Content */,
+				ACD6E69F25E2D2CE00EB3786 /* TodosList.xcdatamodeld */,
 			);
 			path = iCombine;
 			sourceTree = "<group>";
@@ -82,6 +90,7 @@
 			children = (
 				ACCABC8925E1929900062729 /* RequestsView.swift */,
 				ACCE826B25E2BAA000C514C3 /* FormView.swift */,
+				ACD6E6A325E2D32B00EB3786 /* TodosView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -100,6 +109,14 @@
 				ACCE827125E2C2B500C514C3 /* FormModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		ACD6E6A625E2D63500EB3786 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				ACD6E6A725E2D64000EB3786 /* Persistence.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,8 +189,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACCE827225E2C2B500C514C3 /* FormModel.swift in Sources */,
+				ACD6E6A825E2D64000EB3786 /* Persistence.swift in Sources */,
 				ACCE826C25E2BAA000C514C3 /* FormView.swift in Sources */,
+				ACD6E6A425E2D32B00EB3786 /* TodosView.swift in Sources */,
 				ACCABC8A25E1929900062729 /* RequestsView.swift in Sources */,
+				ACD6E6A125E2D2CE00EB3786 /* TodosList.xcdatamodeld in Sources */,
 				ACCE826F25E2BB7C00C514C3 /* FormViewModel.swift in Sources */,
 				ACCABC8825E1929900062729 /* iCombineApp.swift in Sources */,
 			);
@@ -364,6 +384,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		ACD6E69F25E2D2CE00EB3786 /* TodosList.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				ACD6E6A025E2D2CE00EB3786 /* TodosList.xcdatamodel */,
+			);
+			currentVersion = ACD6E6A025E2D2CE00EB3786 /* TodosList.xcdatamodel */;
+			path = TodosList.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = ACCABC7C25E1929900062729 /* Project object */;
 }

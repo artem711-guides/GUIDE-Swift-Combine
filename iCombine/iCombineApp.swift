@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct iCombineApp: App {
+    let persistenceContainer = PersistenceController.shared
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TodosView()
+                .environment(\.managedObjectContext, persistenceContainer.container.viewContext)
         }
     }
 }
